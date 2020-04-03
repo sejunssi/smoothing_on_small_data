@@ -1,0 +1,37 @@
+Dataset: SBM_PATTERN,
+Model: GCN
+
+params={'seed': 12, 'epochs': 1000, 'batch_size': 128, 'init_lr': 0.001, 'lr_reduce_factor': 0.5, 'lr_schedule_patience': 5, 'min_lr': 1e-05, 'weight_decay': 0.0, 'print_epoch_interval': 5, 'max_time': 48}
+
+net_params={'L': 4, 'hidden_dim': 146, 'out_dim': 146, 'residual': True, 'readout': 'mean', 'in_feat_dropout': 0.0, 'dropout': 0.0, 'graph_norm': True, 'batch_norm': True, 'self_loop': False, 'device': device(type='cuda'), 'gpu_id': 2, 'batch_size': 128, 'in_dim': 3, 'n_classes': 2, 'total_param': 100923}
+
+GCNNet(
+  (embedding_h): Embedding(3, 146)
+  (in_feat_dropout): Dropout(p=0.0, inplace=False)
+  (layers): ModuleList(
+    (0): GCNLayer(in_channels=146, out_channels=146, residual=True)
+    (1): GCNLayer(in_channels=146, out_channels=146, residual=True)
+    (2): GCNLayer(in_channels=146, out_channels=146, residual=True)
+    (3): GCNLayer(in_channels=146, out_channels=146, residual=True)
+  )
+  (MLP_layer): MLPReadout(
+    (FC_layers): ModuleList(
+      (0): Linear(in_features=146, out_features=73, bias=True)
+      (1): Linear(in_features=73, out_features=36, bias=True)
+      (2): Linear(in_features=36, out_features=2, bias=True)
+    )
+  )
+)
+
+Total Parameters: 100923
+
+
+    FINAL RESULTS
+TEST ACCURACY: 74.3394
+TRAIN ACCURACY: 74.4267
+
+
+    Total Time Taken: 2.7952 hrs
+Average Time Per Epoch: 100.3483 s
+
+
